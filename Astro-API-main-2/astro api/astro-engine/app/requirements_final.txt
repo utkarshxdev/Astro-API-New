@@ -1,0 +1,34 @@
+# ==========================================
+# Production Requirements - Fully Audited
+# ==========================================
+
+# Core FastAPI
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+pydantic==2.6.1
+pydantic-settings==2.0.0
+typing-extensions>=4.5.0
+
+# Astrology Libraries
+pyswisseph==2.10.3.2
+pytz==2024.1
+python-dateutil==2.9.0
+
+# ✨ NEW: Security & Rate Limiting
+slowapi==0.1.9          # Rate limiting middleware
+python-multipart==0.0.9 # Form data parsing
+email-validator==2.1.0  # Email validation
+
+# ✨ NEW: Production Server
+gunicorn==21.2.0        # Production WSGI server
+python-jose[cryptography]==3.3.0  # JWT tokens (if needed later)
+
+# ✨ NEW: Monitoring (Optional but recommended)
+# prometheus-client==0.19.0    # Metrics
+# sentry-sdk[fastapi]==1.38.0  # Error tracking
+
+# Development Tools
+pytest==7.4.0
+pytest-asyncio==0.21.0
+httpx==0.25.0
+black==23.11.0
