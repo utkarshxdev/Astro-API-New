@@ -94,3 +94,22 @@ class CompatibilityResponse(BaseModel):
     max_gunas: int = 36
     verdict: str
     breakdown: Dict[str, int]  # ✅ FIXED: Integer values only
+
+
+# ==========================================
+# 4. MANGLIK MODELS
+# ==========================================
+
+class ManglikRequest(BaseModel):
+    date: str = Field(..., example="13-01-2007")
+    time: str = Field(..., example="06:47 PM")
+    timezone: str = Field(..., example="Asia/Kolkata")
+    latitude: float = Field(..., example=30.2110)
+    longitude: float = Field(..., example=74.9455)
+
+class ManglikResponse(BaseModel):
+    is_manglik: bool
+    manglik_score: int
+    mars_house: Optional[int] = None
+    details: Optional[Dict[str, Any]] = None
+
