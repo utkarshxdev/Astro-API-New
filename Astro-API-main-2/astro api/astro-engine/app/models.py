@@ -101,15 +101,30 @@ class CompatibilityResponse(BaseModel):
 # ==========================================
 
 class ManglikRequest(BaseModel):
-    date: str = Field(..., example="13-01-2007")
-    time: str = Field(..., example="06:47 PM")
-    timezone: str = Field(..., example="Asia/Kolkata")
-    latitude: float = Field(..., example=30.2110)
-    longitude: float = Field(..., example=74.9455)
+    planetary_longitudes: Dict[str, float]
+
 
 class ManglikResponse(BaseModel):
     is_manglik: bool
-    manglik_score: int
+    severity: str
     mars_house: Optional[int] = None
-    details: Optional[Dict[str, Any]] = None
+    analysis: Optional[str] = None
+
+
+# ==========================================
+# 5. MANGLIK COMPATIBILITY MODELS
+# ==========================================
+
+class ManglikCompatibilityRequest(BaseModel):
+    person1_longitudes: Dict[str, float]
+    person2_longitudes: Dict[str, float]
+
+
+class ManglikCompatibilityResponse(BaseModel):
+    compatible: bool
+    compatibility_type: str
+    reason: str
+    person1_analysis: ManglikResponse
+    person2_analysis: ManglikResponse
+    recommendation: str
 
